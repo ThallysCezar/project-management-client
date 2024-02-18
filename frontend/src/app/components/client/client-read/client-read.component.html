@@ -1,0 +1,76 @@
+<div class="table-container">
+    <h2>Listagem de Todos os Clientes</h2>
+    <mat-table [dataSource]="clients" class="mat-elevation-z8">
+
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
+
+        <!-- Contact Number Column -->
+        <ng-container matColumnDef="contactNumber">
+            <mat-header-cell *matHeaderCellDef> Número de Contato </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.contactNumber}} </mat-cell>
+        </ng-container>
+
+        <!-- Address Column -->
+        <ng-container matColumnDef="address">
+            <mat-header-cell *matHeaderCellDef> Endereço </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.address}} </mat-cell>
+        </ng-container>
+
+        <!-- Gender Column -->
+        <ng-container matColumnDef="gender">
+            <mat-header-cell *matHeaderCellDef> Gênero </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.gender}} </mat-cell>
+        </ng-container>
+
+        <!-- Department Column -->
+        <ng-container matColumnDef="department">
+            <mat-header-cell *matHeaderCellDef> Departamento </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.department}} </mat-cell>
+        </ng-container>
+
+        <!-- Skills Column -->
+        <ng-container matColumnDef="skills">
+            <mat-header-cell *matHeaderCellDef> Habilidades </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.skills}} </mat-cell>
+        </ng-container>
+
+        <!-- Active Column -->
+        <ng-container matColumnDef="isActive">
+            <mat-header-cell *matHeaderCellDef> Ativo </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.isActive ? 'Sim' : 'Não'}} </mat-cell>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef class="action-col-hearder">
+                <button (click)="navigateToClientCreate()" mat-mini-fab class="color-add-button" aria-label="Adicionar um curso">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+            <mat-cell *matCellDef="let row" class="actions">
+                <button mat-icon-button matTooltip="Alterar cliente" class="color-update-client" [routerLink]="['/clients/update', row.id]"
+                    class="action-col">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Deletar cliente" class="color-delete-client" [routerLink]="['/clients/delete', row.id]"
+                    class="action-col">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+    </mat-table>
+</div>

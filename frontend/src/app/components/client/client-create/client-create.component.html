@@ -1,0 +1,54 @@
+<mat-card>
+    <div>
+        <h2 class="color-titulos-metatelecom">Criando um novo Cliente</h2>
+        <form>
+            <label for="name">Nome do cliente</label>
+            <input placeholder="Nome do cliente" id="name" name="name" [(ngModel)]="client.name" type="text" required
+                (blur)="validateField('name', client.name)">
+            <span class="error" *ngIf="showError('name')">Por favor coloque seu nome.</span>
+
+            <label for="contactNumber">Número de contato</label>
+            <input placeholder="Número de contato" id="contactNumber" name="contactNumber"
+                [(ngModel)]="client.contactNumber" type="text" required
+                (blur)="validateField('contactNumber', client.contactNumber)">
+            <span class="error" *ngIf="showError('contactNumber')">Por favor coloque seu contato.</span>
+
+            <label for="address">Endereço</label>
+            <input matInput placeholder="Endereço" id="address" name="address" [(ngModel)]="client.address" type="text"
+                required (blur)="validateField('address', client.address)">
+            <span class="error" *ngIf="showError('address')">Por favor coloque seu endereço.</span>
+
+
+            <label for="gender">Gênero</label>
+            <select id="gender" name="gender" [(ngModel)]="client.gender">
+                <option value="">Seu gênero</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Prefiro não dizer">Prefiro não dizer</option>
+            </select>
+
+            <label for="department">Departamento</label>
+            <select id="department" name="department" [(ngModel)]="client.department">
+                <option value="">Escolha seu departamento</option>
+                <option value="Back-end">Back-end</option>
+                <option value="Front-end">Front-end</option>
+                <option value="TI geralsa">TI geral</option>
+                <option value="Infraestrutura">Infraestrutura</option>
+            </select>
+
+            <label for="skills">Habilidades</label>
+            <input matInput placeholder="Habilidades" id="skills" name="skills" [(ngModel)]="client.skills" type="text"
+                required (blur)="validateField('skills', client.skills)">
+            <span class="error" *ngIf="showError('skills')">Por favor coloque suas habilidades.</span>
+
+
+            <label for="isActive">Ativo</label>
+            <input matInput placeholder="Ativo" id="isActive" name="isActive" [value]="client.isActive ? 'Sim' : 'Não'"
+                disabled type="text">
+
+            <button type="button"
+                (click)="isFormInvalid() ? onError('Por favor, preencha todos os campos antes de salvar.') : createClient()">Salvar</button>
+            <button type="button" (click)="cancel()">Cancelar</button>
+        </form>
+    </div>
+</mat-card>

@@ -1,0 +1,41 @@
+<mat-card>
+    <div>
+        <h2 class="color-titulos-metatelecom">Atualizando cliente</h2>
+        <form>
+            <label for="name">First Name</label>
+            <input placeholder="Nome do cliente" id="name" name="name" [(ngModel)]="client.name" type="text">
+
+            <label for="contactNumber">Número de contato</label>
+            <input placeholder="Número de contato" id="contactNumber" name="contactNumber" [(ngModel)]="client.contactNumber" type="text">
+
+            <label for="address">Endereço</label>
+            <input matInput placeholder="Endereço" id="address" name="address" [(ngModel)]="client.address" type="text">
+
+            <label for="gender">Gênero</label>
+            <select id="gender" name="gender" [(ngModel)]="client.gender" >
+                <option value="">Seu gênero</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Prefiro não dizer">Prefiro não dizer</option>
+            </select>
+
+            <label for="department">Departamento</label>
+            <select id="department" name="department" [(ngModel)]="client.department" >
+                <option value="">Escolha seu departamento</option>
+                <option value="Back-end">Back-end</option>
+                <option value="Front-end">Front-end</option>
+                <option value="TI geralsa">TI geral</option>
+                <option value="Infraestrutura">Infraestrutura</option>
+            </select>
+
+            <label for="skills">Habilidades</label>
+            <input matInput placeholder="Habilidades" id="skills" name="skills" [(ngModel)]="client.skills" type="text">
+
+            <label for="isActive">Ativo</label>
+                <input matInput placeholder="Ativo" id="isActive" name="isActive" [value]="client.isActive ? 'Sim' : 'Não'" disabled type="text">
+
+        <button type="submit" (click)="updateClient()" value="Submit">Atualizar</button>
+        <button type="button" (click)="cancel()" value="Submit">Cancelar</button>
+    </form>
+</div>
+</mat-card>
