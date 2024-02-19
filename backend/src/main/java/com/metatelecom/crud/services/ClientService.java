@@ -44,7 +44,7 @@ public class ClientService {
         try {
             return clientMapper.toDTO(clientRepository.save(clientMapper.toEntity(clientDTO)));
         } catch (ClientException exQuestionAlternative) {
-            throw new ClientException("Erro ao tentar salvar a alternativa");
+            throw new ClientException("Erro ao tentar salvar cliente");
         }
     }
 
